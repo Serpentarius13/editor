@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSave" class="editor__form">
-    <select @input="(e) => handleSelect(e.target.value)">
+    <select @input="handleSelectInput">
       <option
         v-for="struct in structures"
         :key="struct.name"
@@ -27,7 +27,7 @@ import TextInput from "./shared/TextInput.vue";
 interface IEditorForm {
   structures: IStructure[];
   selectedStructure: IStructure | null;
-  handleSelect: (struct: IStructure) => void;
+  handleSelect: (struct: IStructure["name"]) => void;
   handleUpdate: (val: IStructure["value"]) => void;
   handleSave: () => void;
 }
@@ -38,6 +38,12 @@ function handleTextInput(e: Event) {
   const { value } = e.target as HTMLInputElement;
 
   props.handleUpdate(value);
+}
+
+function handleSelectInput(e: Event) {
+  const { value } = e.target as HTMLSelectElement;
+
+  props.handleSelect(value);
 }
 </script>
 

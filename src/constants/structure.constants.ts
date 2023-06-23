@@ -1,10 +1,12 @@
 import { IStructure } from "../types/structure.types";
 import { generateRandomWord } from "../utils/randomWord";
 
+const STRUCT_COUNT = 20;
+
 function generateStructures(): IStructure[] {
   const structures: IStructure[] = [];
 
-  Array.from(Array(10)).forEach((_) => {
+  Array.from(Array(STRUCT_COUNT)).forEach((_) => {
     const name = generateRandomWord();
     const value = generateRandomWord();
 

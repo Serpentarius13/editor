@@ -18,6 +18,7 @@ import { structures } from "../constants/structure.constants";
 import { useToast } from "vue-toastification";
 import EditorForm from "./EditorForm.vue";
 import StructureList from "./StructureList.vue";
+import { scrollToStructure } from "../utils/scrollToStructure";
 
 const toast = useToast();
 
@@ -49,6 +50,8 @@ function saveUpdates() {
     if (struct.name === selectedNow.name) return selectedNow;
     else return struct;
   });
+
+  scrollToStructure(selectedNow.name);
 }
 </script>
 
